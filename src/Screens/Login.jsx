@@ -1,8 +1,3 @@
-
-
-
-
-
 import React from 'react';
 import { View, TouchableOpacity, StyleSheet, Image,Text } from 'react-native';
 import Colors from '../Assets/Shared/Colors';
@@ -24,7 +19,9 @@ const Login = ({navigation}) => {
       await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
       const { idToken, user } = await GoogleSignin.signIn();
       const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
       const authResult = await auth().signInWithCredential(googleCredential);
+      
       console.log('Signed in with Google!', authResult.user);
       console.log('User details:', user);
       navigation.navigate('Home');
